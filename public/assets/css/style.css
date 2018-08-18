@@ -1,4 +1,23 @@
-container {
-    display: flex;
-    align-items: center;
+html, body {
+    background: #4BA3F1
+}    
+
+.main-container {
+    background-color: orangered
+}
+
+.burgerSquare {
+    background: white;
+    padding: 30px;
+}
+
+.burgerForm {
+    background-color: white
+
+}
+
+.devoured {
+    color: darkred;
+    right: 0;
+    margin-right: 10px;
 }

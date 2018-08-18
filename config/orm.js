@@ -11,39 +11,37 @@ const connection = require("../config/connection.js");
 
 let orm = {
 
-    selectAll: function (cb) {
+    selectAll: function (callBack) {
         let queryString = "SELECT * FROM burgers";
         connection.query(queryString, function (err, res) {
             if (err) {
                 throw err;
             }
-            cb(res);
+            callBack(res);
         });
     },
-    insertOne: function(burger, cb) {
-        let queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
-        connection.query(queryString, [burger], function(err, res) {
+    insertOne: function(table, newBurger, callBack) {
+        let queryString = "INSERT INTO " + table + " SET ?";
+        connection.query(queryString, newBurger, function(err, res) {
             if (err) {
                 throw err;
             }
-            cb(res);
+            console.log('this is WORKING')
+            callBack(res);
         });
     },
-    updateOne: function(id, cb) {
-        let queryString = "UPDATE burgers SET devoured = true WHERE id = ?";
-        conneciton.query(queryString, [id], function(err, res) {
+    updateOne: function(table, id, callBack) {
+        let queryString = "UPDATE " + table + " SET devoured = true WHERE id = ?";
+        connection.query(queryString, id, function(err, res) {
             if (err) {
                 throw err;
             }
-            cb(res);
+            console.log("Update One Working")
+            callBack(res);
         });
     }
 
 };
-
-
-
-
 
 
 module.exports = orm;

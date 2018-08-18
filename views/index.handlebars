@@ -1,16 +1,67 @@
 
-<div class="container">
 
-<h1>Eat Da Burger</h1>
+<div class="container main-container">
 
-<form>
-  <div class="col-sm-4">
-    <label for="forminput">Burger</label>
-    <input type="text" class="form-control" id="userInput" placeholder="Type in a burger you'd like to eat!">
-  </div>
-  <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    <div class="jumbotron jumbotron-fluid border-red">
+        <div class="container">
+            <h1 class="display-3 text-center">
+                <i class="fas fa-utensils fa-sm"></i> Eat Burgers</h1>
+            <p class="lead text-center">Have a burger.</p>
+        </div>
     </div>
-</form>
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div class="burgerSquare">
+                <h3>Burgers to Eat</h3>
+                <hr>
+                <ul class="list-group">
+                    {{#each burger_name}} {{#unless devoured}}
+                    <li class="list-group-item list-group-item-warning" value="{{id}}">
+                        {{burger_name}}
+                        <a href="#" class="devoured" data-id="{{id}}" data-attribute="{{burger_name}}" data-state="{{devoured}}">
+                            <button class="btn btn-sm btn-warning">Devour</button>
+                        </a>
+                    </li>
+                    {{/unless}} {{/each}}
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="burger-img-container text-center">
+                <img src="/public/assets/img/burger-flat.png" class="rounded" alt="burger">
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="burgerSquare">
+                <h3>Burgers You've Eaten (Yum)</h3>
+                <hr>
+                <ul class="list-group">
+                    {{#each burgers}} {{#if devoured}}
+                    <li class="list-group-item list-group-item-dark" data-id="{{id}}">
+                        {{burger_name}}
+                    </li>
+                    {{/if}} {{/each}}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-5 float-right">
+            <form class="burgerForm mt-5 p-3 rounded">
+                <label for="newBerg">
+                    <h5>Add a Burger:</h5>
+                </label>
+                <input name="newBerg" type="text" class="form-control" id="newBurger" placeholder="Enter a burger you want to eat here">
+                <button for="newBerg" class="btn btn-lg btn-info mt-3" id="newSubmit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
 
 </div>
