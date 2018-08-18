@@ -10,7 +10,7 @@ $(document).ready(function() {
 
      
         $.ajax({
-            url: "/add/burger",
+            url: "/new/burger",
             type: "POST",
             data: newBurger,
             success: function () {
